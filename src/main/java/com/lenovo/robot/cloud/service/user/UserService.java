@@ -3,13 +3,14 @@ package com.lenovo.robot.cloud.service.user;
 import java.util.List;
 
 import com.lenovo.robot.cloud.model.User;
+import com.lenovo.robot.cloud.service.IService;
 
 /**
  * 
  * @author yangww4
  *
  */
-public interface UserService {
+public interface UserService extends IService<User>{
 	
 	int insert(User user);
 
