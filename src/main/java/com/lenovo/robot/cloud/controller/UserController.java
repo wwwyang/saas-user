@@ -47,4 +47,11 @@ public class UserController {
 
 		return userService.selectList(pageNum, pageSize);
 	}
+	
+	@ResponseBody
+	@GetMapping(value = "/{userid}", produces = { "application/json;charset=UTF-8" })
+	public Object selectList(@PathVariable("userid") String userid) {
+		
+		return userService.selectByPrimaryKey(userid);
+	}
 }

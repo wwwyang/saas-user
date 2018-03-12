@@ -26,6 +26,11 @@ public class UserServiceImpl implements UserService {
 		return userMapper.insertSelective(user);
 	}
 
+	@Override
+	public User selectByPrimaryKey(String userid) {
+		return userMapper.selectByPrimaryKey(userid);
+	}
+
 	/**
 	 * 这个方法中用到了我们开头配置依赖的分页插件pagehelper
 	 * <p>

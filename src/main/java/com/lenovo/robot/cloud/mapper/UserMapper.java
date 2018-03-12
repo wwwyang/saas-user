@@ -15,7 +15,7 @@ public interface UserMapper {
 	 * @param userId
 	 * @return
 	 */
-	int deleteByPrimaryKey(Integer userId);
+	int deleteByPrimaryKey(String userid);
 
 	/**
 	 * 添加
@@ -26,7 +26,7 @@ public interface UserMapper {
 
 	int insertSelective(User record);
 
-	User selectByPrimaryKey(Integer userId);
+	User selectByPrimaryKey(String userid);
 
 	int updateByPrimaryKeySelective(User record);
 
