@@ -2,9 +2,11 @@ package com.lenovo.robot.cloud.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -39,7 +41,7 @@ public class UserController {
 
 	@ResponseBody
 	@GetMapping(value = "/{pageNum}/{pageSize}", produces = { "application/json;charset=UTF-8" })
-	public Object selectList(@PathVariable("pageNum") int pageNum, @PathVariable("pageSize") int pageSize) {
+	public Object selectList(@PathVariable int pageNum, @PathVariable int pageSize) {
 
 		if (pageSize == 0) {
 			pageSize = SystemConstance.PAGE_SIZE;
@@ -47,11 +49,25 @@ public class UserController {
 
 		return userService.selectList(pageNum, pageSize);
 	}
-	
+
 	@ResponseBody
 	@GetMapping(value = "/{userid}", produces = { "application/json;charset=UTF-8" })
-	public Object selectList(@PathVariable("userid") String userid) {
-		
+	public Object selectList(@PathVariable String userid) {
+
 		return userService.selectByPrimaryKey(userid);
+	}
+
+	@ResponseBody
+	@DeleteMapping(value = "/{userid}", produces = { "application/json;charset=UTF-8" })
+	public int delete(@PathVariable String userid) {
+
+		return userService.delete(userid);
+	}
+
+	@ResponseBody
+	@PutMapping(produces = { "application/json;charset=UTF-8" })
+	public int update(User user) {
+
+		return userService.update(user);
 	}
 }

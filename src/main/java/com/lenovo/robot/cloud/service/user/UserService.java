@@ -10,9 +10,14 @@ import com.lenovo.robot.cloud.model.User;
  *
  */
 public interface UserService {
+	
 	int insert(User user);
+
+	int update(User user);
 
 	User selectByPrimaryKey(String userid);
 
 	List<User> selectList(int pageNum, int pageSize);
+
+	int delete(String userid);
 }

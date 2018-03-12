@@ -25,6 +25,11 @@ public class UserServiceImpl implements UserService {
 	public int insert(User user) {
 		return userMapper.insertSelective(user);
 	}
+	
+	@Override
+	public int update(User user) {
+		return userMapper.updateByPrimaryKey(user);
+	}
 
 	@Override
 	public User selectByPrimaryKey(String userid) {
@@ -44,6 +49,11 @@ public class UserServiceImpl implements UserService {
 	public List<User> selectList(int pageNum, int pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
 		return userMapper.selectList();
+	}
+
+	@Override
+	public int delete(String userid) {
+		return userMapper.deleteByPrimaryKey(userid);
 	}
 
 }
